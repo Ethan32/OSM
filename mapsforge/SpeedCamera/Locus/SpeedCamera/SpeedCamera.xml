@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme ../renderTheme.xsd" version="1" map-background="#FFFFFF">
+  <stylemenu id="MenuList" defaultvalue="style_camera" defaultlang="en">
+    <layer id="layer_speed_camera" enabled="true">
+      <name lang="en" value="Speed Camera" />
+      <name lang="zh" value="測速" />
+      <cat id="speed_camera" />
+    </layer>
+
+    <layer id="style_camera" visible="true">
+      <name lang="en" value="Camera" />
+      <name lang="zh" value="測速" />
+      <overlay id="layer_speed_camera" />
+    </layer>
+  </stylemenu>
+
+	<rule e="node" k="highway" v="*">
+  	<rule cat="speed_camera" e="any" k="*" v="speed_camera" zoom-min="6">
+    	<circle r="3" scale-radius="true" fill="#FF0000" stroke="#0000FF" stroke-width="0.05" />
+  	</rule>
+	</rule>
+</rendertheme>
