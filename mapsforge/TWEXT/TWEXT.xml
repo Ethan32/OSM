@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<rendertheme xmlns="http://mapsforge.org/renderTheme" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mapsforge.org/renderTheme ../renderTheme.xsd" version="1" map-background="#FFFFFF">
+  <stylemenu id="MenuList" defaultvalue="style_twext" defaultlang="en">
+    <layer id="layer_speed_camera" enabled="true">
+      <name lang="en" value="Speed Camera" />
+      <name lang="zh" value="測速" />
+      <cat id="speed_camera" />
+    </layer>
+    <layer id="layer_milestone" enabled="true">
+      <name lang="en" value="Milestone" />
+      <name lang="zh" value="里程" />
+      <cat id="milestone" />
+    </layer>
+    <layer id="layer_MRT" enabled="true">
+      <name lang="en" value="MRT" />
+      <name lang="zh" value="捷運" />
+      <cat id="MRT" />
+    </layer>
+    
+    <layer id="style_twext" visible="true">
+      <name lang="en" value="Taiwan" />
+      <name lang="zh" value="台灣" />
+      <overlay id="layer_speed_camera" />
+      <overlay id="layer_milestone" />
+      <overlay id="layer_MRT" />
+    </layer>
+  </stylemenu>
+
+  <rule e="node" k="highway" v="*">
+    <rule cat="speed_camera" e="any" k="*" v="speed_camera" zoom-min="13">
+      <circle r="3" scale-radius="true" fill="#FF0000" stroke="#0000FF" stroke-width="0.05" />
+    </rule>
+    <rule cat="milestone" e="any" k="*" v="milestone" zoom-min="15">
+      <circle r="1" scale-radius="true" fill="#5000FF00" stroke="#000000" stroke-width="0.05" />
+      <caption priority="99" fill="#FFFF80" dy="-30" display="always" font-style="bold" font-size="16dp" k="name" stroke="#80007828" stroke-width="10"/>
+    </rule>
+  </rule>
+  
+  <rule e="way" k="*" v="*">
+    <rule cat="MRT" e="any" k="*" v="subway" zoom-min="13">
+      <rule e="any" k="network" v="高雄捷運">
+        <rule e="any" k="name" v="捷運橘線">
+          <line stroke="#C0FF8028" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+        <rule e="any" k="name" v="捷運紅線">
+          <line stroke="#C0FF3030" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>        
+      </rule>
+      <rule e="any" k="network" v="台北捷運">
+        <rule e="any" k="name" v="捷運文湖線">
+          <line stroke="#C0C18428" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+        <rule e="any" k="name" v="捷運淡水信義線">
+          <line stroke="#C0E0002B" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+        <rule e="any" k="name" v="捷運松山新店線|捷運松山線|捷運小碧潭支線">
+          <line stroke="#C0018259" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+        <rule e="any" k="name" v="捷運中和新蘆線">
+          <line stroke="#C0F8B31B" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+        <rule e="any" k="name" v="捷運板南線">
+          <line stroke="#C0006FBD" stroke-width="1.5" stroke-linecap="butt"/>
+        </rule>
+      </rule>
+      <rule e="any" k="name" v="桃園機場捷運">
+        <line stroke="#C0774597" stroke-width="1.5" stroke-linecap="butt"/>
+      </rule>
+    </rule>
+  </rule>
+  
+</rendertheme>
